@@ -100,5 +100,7 @@ const playSong = id => {
   audio.play()
 };
 playButton.addEventListener("click", () => {
-  playSong(0);
+    if (userData.currentSong === null) {
+    playSong(userData.songs[0].id);
+    }
 });

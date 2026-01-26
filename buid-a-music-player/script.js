@@ -108,6 +108,11 @@ playButton.addEventListener("click", () => {
 });
 
 const songs = document.querySelectorAll(".playlist-song");
-songs.forEach((song) => {
 
+songs.forEach((song) => {
+  const id = song.getAttribute("id").slice(5);
+  const songBtn = song.querySelector("button");
+  songBtn.addEventListener("click", () => {
+    playSong(Number(id));
+  })
 });

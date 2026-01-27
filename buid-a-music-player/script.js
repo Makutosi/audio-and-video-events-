@@ -99,6 +99,11 @@ const playSong = id => {
   playButton.classList.add("playing")
   audio.play()
 };
+
+const pauseSong = () => {
+  userData.songCurrentTime = audio.currentTime;
+}
+
 playButton.addEventListener("click", () => {
     if (userData.currentSong === null) {
     playSong(userData.songs[0].id);

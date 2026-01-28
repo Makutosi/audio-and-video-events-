@@ -97,11 +97,13 @@ const playSong = id => {
   }
   userData.currentSong = song;
   playButton.classList.add("playing")
-  audio.play()
+  audio.play();
 };
 
 const pauseSong = () => {
-  userData.songCurrentTime = audio.currentTime;
+  userData.songCurrentTime = audio.currentTime; // 再生位置を保存
+  playButton.classList.remove("playing");       // 停止 → 色が元に戻る
+  audio.pause();                                // 音声を停止
 }
 
 playButton.addEventListener("click", () => {

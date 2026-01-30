@@ -106,6 +106,8 @@ const pauseSong = () => {
   audio.pause();                                // 音声を停止
 }
 
+const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
+
 playButton.addEventListener("click", () => {
     if (userData.currentSong === null) {
     playSong(userData.songs[0].id);

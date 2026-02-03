@@ -110,6 +110,12 @@ const getCurrentSongIndex = () => userData.songs.indexOf(userData.currentSong);
 
 const getNextSong = () => userData.songs[getCurrentSongIndex() + 1];
 
+const playNextSong = () => {
+  if (userData.currentSong === null) {
+    playSong(userData.songs[0].id);
+  }
+}
+
 playButton.addEventListener("click", () => {
     if (userData.currentSong === null) {
     playSong(userData.songs[0].id);

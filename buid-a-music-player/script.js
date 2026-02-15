@@ -141,6 +141,7 @@ const highlightCurrentSong = ()=> {
   const previousCurrentSong = document.querySelector('.playlist-song[aria-current="true"]');
   previousCurrentSong?.removeAttribute("aria-current");
   const songToHighlight = document.getElementById(`song-${userData.currentSong?.id}`);
+  songToHighlight?.setAttribute("aria-current", "true");
 };
 
 playButton.addEventListener("click", () => {

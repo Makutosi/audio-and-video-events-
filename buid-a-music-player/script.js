@@ -141,6 +141,14 @@ const playNextSong = () => {
   }
 }
 
+const setPlayerDisplay = () => {
+  const currentTitle = userData.currentSong?.title;
+  const currentArtist = userData.currentSong?.artist;
+
+  playingSong.textContent = currentTitle ? currentTitle : "";
+  songArtist.textContent = currentArtist ? currentArtist : "";
+};
+
 const highlightCurrentSong = ()=> {
   const previousCurrentSong = document.querySelector('.playlist-song[aria-current="true"]');
   previousCurrentSong?.removeAttribute("aria-current");

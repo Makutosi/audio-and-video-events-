@@ -100,6 +100,7 @@ const playSong = (id, start=true) => {
   }
   userData.currentSong = song;
   playButton.classList.add("playing")
+  setPlayerDisplay();
   highlightCurrentSong();
   audio.play();
 };

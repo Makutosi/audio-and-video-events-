@@ -157,6 +157,11 @@ const highlightCurrentSong = ()=> {
   songToHighlight?.setAttribute("aria-current", "true");
 };
 
+const setPlayButtonAccessibleText = () => {
+  const song = userData.currentSong;
+  playButton.setAttribute("aria-label", userData.currentSong ? `Play ${song.title}` : "Play");
+};
+
 playButton.addEventListener("click", () => {
     if (userData.currentSong === null) {
     playSong(userData.songs[0].id);

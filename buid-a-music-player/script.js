@@ -139,6 +139,9 @@ const playNextSong = () => {
   } else {
     userData.currentSong = null;
     userData.songCurrentTime = 0;
+    setPlayerDisplay();
+    highlightCurrentSong();
+    setPlayButtonAccessibleText();
     pauseSong();
   }
 }

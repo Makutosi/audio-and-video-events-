@@ -1,4 +1,10 @@
+
+
+import { useState } from "react";
+
 export default function App() {
+  const [display, setDisplay] = useState("");
+
   const bank = [ 
     { 
       key: "Q", 
@@ -47,10 +53,11 @@ export default function App() {
     }
   ];
 
-  const playSound = (key) => {
-    const audio = document.getElementById(key);
+  const playSound = (pad) => {
+    const audio = document.getElementById(pad.key);
     audio.currentTime = 0;
     audio.play();
+    setDisplay(pad.id);
   };
 
   return (
@@ -61,14 +68,14 @@ export default function App() {
             key={pad.key} 
             className="drum-pad" 
             id={pad.id} 
-            onClick={() => playSound(pad.key)} 
+            onClick={() => playSound(pad)} 
           > 
             {pad.key} 
             <audio className="clip" id={pad.key} src={pad.src}></audio> 
           </button> 
         ))} 
       </div> 
-      <p id="display">Drum Machine</p> 
+      <p id="display">{display}</p> 
     </div>
   );
 }

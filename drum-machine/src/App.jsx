@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
   const [display, setDisplay] = useState("");
@@ -59,6 +59,19 @@ export default function App() {
     audio.play();
     setDisplay(pad.id);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const key = e.key.toUpperCase();
+      const pad = bank.find((p) => p.key === key);
+      if (pad) {
+        playSound(pad);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [bank]);
 
   return (
     <div id="drum-machine"> 

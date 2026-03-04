@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const [display, setDisplay] = useState("");
+  const [activePad, setActivePad] = useState(null);
 
   const bank = [ 
     { 
@@ -58,6 +59,9 @@ export default function App() {
     audio.currentTime = 0;
     audio.play();
     setDisplay(pad.id);
+
+    setActivePad(pad.key);
+    setTimeout(() => setActivePad(null), 150);
   };
 
   useEffect(() => {
@@ -79,8 +83,8 @@ export default function App() {
         {bank.map((pad) => ( 
           <button 
             key={pad.key} 
-            className="drum-pad" 
             id={pad.id} 
+            className= {`drum-pad ${activePad === pad.key ? "active" : ""}`}
             onClick={() => playSound(pad)} 
           > 
             {pad.key} 

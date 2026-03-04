@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Drum Machine styles */
+.drum-pad {
+  transition: background 0.15s, transform 0.15s;
+}
+
+.drum-pad.active {
+  background: #ffeb3b;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ffeb3b;
+}

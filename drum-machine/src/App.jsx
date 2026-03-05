@@ -1,6 +1,7 @@
 
 
 import { useState, useEffect } from "react";
+import "./App.css";
 
 export default function App() {
   const [display, setDisplay] = useState("");
@@ -84,7 +85,7 @@ export default function App() {
           <button 
             key={pad.key} 
             id={pad.id} 
-            className= {`drum-pad ${activePad === pad.key ? "active" : ""}`}
+            className= {`drum-pad ${activePad === pad.key ? `active-${pad.key}`: ""}`}
             onClick={() => playSound(pad)} 
           > 
             {pad.key} 

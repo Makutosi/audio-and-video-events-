@@ -46,8 +46,63 @@
   transition: background 0.15s, transform 0.15s;
 }
 
-.drum-pad.active {
-  background: #ffeb3b;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #ffeb3b;
+/* 共通の光り方（パルス）*/
+@keyframes disco-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.drum-pad.active-Q {
+  background: #ff2d95;
+  box-shadow: 0 0 20px #ff2d95;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-W {
+  background: #00eaff;
+  box-shadow: 0 0 20px #00eaff;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-E {
+  background: #b967ff;
+  box-shadow: 0 0 20px #b967ff;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-A {
+  background: #9dff00;
+  box-shadow: 0 0 20px #9dff00;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-S {
+  background: #ff8c00;
+  box-shadow: 0 0 20px #ff8c00;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-D {
+  background: #ff4f81;
+  box-shadow: 0 0 20px #ff4f81;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-Z {
+  background: #00ffd5;
+  box-shadow: 0 0 20px #00ffd5;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-X {
+  background: #faff00;
+  box-shadow: 0 0 20px #faff00;
+  animation: disco-pulse 0.2s ease-out;
+}
+
+.drum-pad.active-C {
+  background: #ff00c8;
+  box-shadow: 0 0 20px #ff00c8;
+  animation: disco-pulse 0.2s ease-out;
 }

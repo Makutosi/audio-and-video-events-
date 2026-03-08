@@ -6,8 +6,8 @@ import "./App.css";
 export default function App() {
   const [display, setDisplay] = useState("");
   const [activePad, setActivePad] = useState(null);
-  const [power, setPower] = useState(true);
-  const [volume, setVolume] = useState(0.5);
+  const [power, setPower] = useState(true);   // 電源 ON/OFF
+  const [volume, setVolume] = useState(0.5);  // ボリューム
 
   const bank = [
     { key: "Q", id: "Heater-1", src: "https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3" },
@@ -21,9 +21,8 @@ export default function App() {
     { key: "C", id: "Closed-HH", src: "https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3" }
   ];
 
+  // 音を鳴らす共通関数（クリックもキーボードもここを使う）
   const playSound = (pad) => {
-    if (!power) return;
-
     const audio = document.getElementById(pad.key);
     audio.volume = volume;
     audio.currentTime = 0;
@@ -35,8 +34,11 @@ export default function App() {
     setTimeout(() => setActivePad(null), 150);
   };
 
+  // キーボード → 電源 OFF のときだけ鳴る
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (power) return; // 電源 ON のときはキーボード無効
+
       const key = e.key.toUpperCase();
       const pad = bank.find((p) => p.key === key);
       if (pad) playSound(pad);
@@ -44,7 +46,7 @@ export default function App() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [power, volume]);
 
   return (
     <div className="app-container">
@@ -67,7 +69,9 @@ export default function App() {
       />
 
       {/* Display */}
-      <div className="display">{display || "Ready"}</div>
+      <div className="display">
+        {power ? "Click Mode" : "Keyboard Mode"} — {display || "Ready"}
+      </div>
 
       {/* Pad Grid */}
       <div className="pad-grid">
@@ -76,7 +80,9 @@ export default function App() {
             key={pad.key}
             id={pad.id}
             className={`drum-pad ${activePad === pad.key ? `active-${pad.key}` : ""}`}
-            onClick={() => playSound(pad)}
+            onClick={() => {
+              if (power) playSound(pad); // 電源 ON のときだけクリックで鳴る
+            }}
           >
             {pad.key}
             <audio className="clip" id={pad.key} src={pad.src}></audio>

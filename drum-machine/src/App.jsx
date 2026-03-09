@@ -50,6 +50,7 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <div className="disco-light"></div>
 
       {/* Power Switch */}
       <div

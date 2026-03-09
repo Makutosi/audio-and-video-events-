@@ -41,10 +41,40 @@
   color: #888;
 }
 
+/* 背景に動く光のアニメーション */
 body {
-  background: radial-gradient(circle at center, #1a1a2e, #000000 70%);
+  background: radial-gradient(circle, rgba(255,0,200,0.28), transparent 70%);
   color: #fff;
   font-family: 'Orbitron', sans-serif;
+  overflow: hidden; /* 光がはみ出さないように追加 */
+}
+
+/* 光の玉（アニメーション用） */
+.disco-light {
+  position: fixed;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255,0,200,0.18), transparent 70%);
+  animation: moveLight 6s infinite linear, colorShift 8s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 光がゆっくり動くアニメーション */
+@keyframes colorShift {
+  0%   { filter: hue-rotate(0deg); }
+  25%  { filter: hue-rotate(90deg); }
+  50%  { filter: hue-rotate(180deg); }
+  75%  { filter: hue-rotate(270deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+
+.app-container {
+  position: relative;
+  z-index: 1;
 }
 
 .pad-grid {
